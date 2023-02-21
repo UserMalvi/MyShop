@@ -10,11 +10,11 @@ namespace Myshop.WebUi.Controllers
 {
     public class ProductCategoryManagerController : Controller
     {
-        ProductCategoryRepository context;
+        InMemoryRepository<ProductCategory> context;
         //ProductCategory productCategories;
         public ProductCategoryManagerController()
         {
-            context = new ProductCategoryRepository();
+            context = new InMemoryRepository<ProductCategory>();
         }
 
         public ActionResult Index()
@@ -38,7 +38,7 @@ namespace Myshop.WebUi.Controllers
             }
             else
             {
-                context.Insert(productCategory);
+                context.insert(productCategory);
                 context.Commit();
 
                 return RedirectToAction("Index");
